@@ -1,7 +1,6 @@
 package com.example.somefood.AuthAndAuthorize
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.api.R
 import com.example.api.databinding.FragmentAuthBinding
-import com.example.somefood.UserBundle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : Fragment(R.layout.fragment_auth) {
@@ -48,10 +46,10 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                 btnRegistration.isInvisible = !isVisible
             }
             btnSignIn.setOnClickListener {
-                val log = login.text
-                val pass = password.text
-                viewModelAuth.checkAuth(log.toString(),pass.toString(),false)
-                pngFace.setBackground(context?.let { ContextCompat.getDrawable(it, R.drawable.ic_launcher_background) })
+//                val log = login.text
+//                val pass = password.text
+//                viewModelAuth.checkAuth(log.toString(),pass.toString())
+//                pngFace.setBackground(context?.let { ContextCompat.getDrawable(it, R.drawable.ic_launcher_background) })
                     playVisible()
             }
             btnAuth.setOnClickListener {

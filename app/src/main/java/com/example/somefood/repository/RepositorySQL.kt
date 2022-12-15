@@ -1,15 +1,15 @@
 package com.example.somefood.repository
 
+import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Dao.DaoUser
 
 class RepositorySQL (
     private val User: DaoUser){
-   suspend fun checkAuth(log: String?, pass: String?, b: Boolean)  =
-       log?.let {
-           if (pass != null) {
-               User.checkAuth(it,pass,b)
-           }else{println("dirka")}
-       }
 
+    fun registerUser(usersDb:UsersDb) = User.registerUser(usersDb)
+
+     fun regCheck() = User.checkAuth()
+
+    suspend fun checkLogin(log:String) = User.checkLogin(log)
 
 }

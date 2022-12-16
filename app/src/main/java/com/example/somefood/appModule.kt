@@ -1,7 +1,11 @@
 package com.example.somefood
 
 import androidx.room.Room
-import com.example.somefood.AuthAndAuthorize.AuthViewModel
+import com.example.somefood.AuthAndAuthorize.AuthAndRegViewModel
+import com.example.somefood.AuthFragment.AuthFragment
+import com.example.somefood.AuthFragment.AuthViewModel
+import com.example.somefood.AuthSuccess.ListFragment
+import com.example.somefood.AuthSuccess.ListViewModel
 import com.example.somefood.DBandProvider.DBprovider
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
@@ -17,7 +21,9 @@ val appModule = module {
     single { cicerone.getNavigatorHolder() }
     viewModel { MainActivityViewModel(get()) }
     viewModel { RegistrationViewModel(get(),get()) }
+    viewModel { AuthAndRegViewModel(get()) }
     viewModel { AuthViewModel(get(), get()) }
+    viewModel { ListViewModel(get()) }
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

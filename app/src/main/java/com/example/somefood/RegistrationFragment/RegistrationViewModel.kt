@@ -8,30 +8,32 @@ import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel (
     private val router: Router,
     private val repositorySQL: RepositorySQL
         ): ViewModel() {
-    private val _exp = MutableStateFlow<String>("")
-    val exp : MutableStateFlow<String> = _exp
 
-            fun goToBack(){
+    private var _regBoolean = MutableStateFlow(false)
+            var regBoolean : MutableStateFlow<Boolean> = _regBoolean
+
+    fun goToBack(){
                 router.newRootScreen(Screens.routeToHomeFragment())
             }
 
     fun register(model: UsersDb){
+        _regBoolean.value = false
         viewModelScope.launch(Dispatchers.IO) {
-            repositorySQL.registerUser(model)
-        }
-    }
-
-
-    fun checkRelative(log: String){
-        viewModelScope.launch (Dispatchers.IO){
-//            llll.value = repositorySQL.regCheck().toString()
-            _exp.value  = repositorySQL.checkLogin(log)
+            println("ss${repositorySQL.checkLogin(model.login)}")
+            println("sw${model.login}")
+            if (repositorySQL.checkLogin(model.login) == model.login){
+                _regBoolean.value = true
+            } else {
+                repositorySQL.registerUser(model)
+                router.newRootScreen(Screens.routeToHomeFragmentAfterReg(true))
+            }
         }
     }
 }

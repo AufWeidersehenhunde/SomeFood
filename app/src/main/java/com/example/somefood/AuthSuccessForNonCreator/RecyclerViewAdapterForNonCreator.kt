@@ -4,23 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.api.databinding.RecyclerViewItemBinding
-import com.example.somefood.DBandProvider.FoodDb
 
 class RecyclerViewAdapterForNonCreator:
     RecyclerView.Adapter<RecyclerViewAdapterForNonCreator.MyViewHolder>() {
-    var item: List<FoodDb> = listOf()
-
-    fun set(items: List<FoodDb>) {
-        this.item = items
-        notifyDataSetChanged()
-    }
+    var item: MutableList<//prepopulateRoom> = mutableListOf()
 
     class MyViewHolder(itemBinding: RecyclerViewItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         private val binding = itemBinding
-        fun bind(food:FoodDb){
+        fun bind(){
             binding.apply {
-                nameText.text = food.name
+
             }
         }
         }

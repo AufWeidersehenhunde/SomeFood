@@ -38,7 +38,6 @@ android {
 
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'org.chromium.net:cronet-embedded:98.4758.101'
 
     // ROOM
     kapt "androidx.room:room-compiler:2.4.3"

@@ -2,10 +2,8 @@ package com.example.somefood
 
 import androidx.room.Room
 import com.example.somefood.AuthAndAuthorize.AuthAndRegViewModel
-import com.example.somefood.AuthFragment.AuthFragment
 import com.example.somefood.AuthFragment.AuthViewModel
-import com.example.somefood.AuthSuccess.ListFragment
-import com.example.somefood.AuthSuccess.ListViewModel
+import com.example.somefood.AuthSuccessForNonCreator.NonCreatorListViewModel
 import com.example.somefood.DBandProvider.DBprovider
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
@@ -23,7 +21,7 @@ val appModule = module {
     viewModel { RegistrationViewModel(get(),get()) }
     viewModel { AuthAndRegViewModel(get()) }
     viewModel { AuthViewModel(get(), get()) }
-    viewModel { ListViewModel(get()) }
+    viewModel { NonCreatorListViewModel(get(),get()) }
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

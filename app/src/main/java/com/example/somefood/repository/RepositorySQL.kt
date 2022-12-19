@@ -12,9 +12,5 @@ class RepositorySQL (
 
     suspend fun checkAccount(log: String, pass:String) = User.checkAccount(log, pass)
 
-    fun registerCreator (log: String) = User.registerCreator(log)
-
-    fun registerCreator0 (log: String) = User.registerCreator0(log)
-
-    fun checkAn(log: String) = User.checkAn(log)
+    fun checkStatus(UUID:String) = User.checkStatus(UUID)
 }

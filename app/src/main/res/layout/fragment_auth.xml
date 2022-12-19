@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.somefood.AuthFragment.AuthFragment">
 
-    <Switch
-        android:id="@+id/btnPerson"
-        android:layout_width="49dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="180dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginAuth"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
-
     <EditText
         android:id="@+id/loginAuth"
         android:layout_width="match_parent"
@@ -73,30 +63,6 @@
             tools:layout_editor_absoluteX="0dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/person2"
-        android:layout_width="99dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="76dp"
-        android:text="Я исполнитель"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toEndOf="@+id/btnPerson"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/person1"
-        android:layout_width="91dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="76dp"
-        android:text="Я заказчик"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/btnPerson"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

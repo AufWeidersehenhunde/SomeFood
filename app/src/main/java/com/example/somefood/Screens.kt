@@ -2,7 +2,7 @@ package com.example.somefood
 
 import com.example.somefood.AuthAndAuthorize.AuthAndRegFragment
 import com.example.somefood.AuthFragment.AuthFragment
-import com.example.somefood.AuthSuccess.ListFragment
+import com.example.somefood.AuthSuccessForNonCreator.NonCreatorListFragment
 import com.example.somefood.RegistrationFragment.RegistrationFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -11,5 +11,5 @@ object Screens {
     fun routeToRegistrationFragment() = FragmentScreen{RegistrationFragment()}
     fun routeToHomeFragmentAfterReg(result:Boolean)  = FragmentScreen{AuthAndRegFragment.getInstance(result)}
     fun routeToAuthFragment() = FragmentScreen{AuthFragment()}
-    fun routeToListFragment() = FragmentScreen{ListFragment()}
+    fun routeToListFragment(uuid:String) = FragmentScreen{NonCreatorListFragment.getInstance(uuid)}
 }

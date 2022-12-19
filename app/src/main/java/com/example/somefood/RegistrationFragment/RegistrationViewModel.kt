@@ -26,8 +26,6 @@ class RegistrationViewModel (
     fun register(model: UsersDb){
         _regBoolean.value = false
         viewModelScope.launch(Dispatchers.IO) {
-            println("ss${repositorySQL.checkLogin(model.login)}")
-            println("sw${model.login}")
             if (repositorySQL.checkLogin(model.login) == model.login){
                 _regBoolean.value = true
             } else {

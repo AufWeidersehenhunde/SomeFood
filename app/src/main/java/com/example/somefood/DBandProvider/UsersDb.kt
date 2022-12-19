@@ -12,5 +12,5 @@ data class UsersDb(
     @PrimaryKey var uuid:String = UUID.randomUUID().toString(),
     @ColumnInfo(name = "login") val login: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "isCreator") val isCreator: Boolean
+    @ColumnInfo(name = "isCreator") val isCreator: Boolean = false
 )

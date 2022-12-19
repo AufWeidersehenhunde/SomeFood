@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.api.R
@@ -17,6 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private val viewModelRegistrationFragment: RegistrationViewModel by viewModel()
     private val viewBinding: FragmentRegistrationBinding by viewBinding()
+    private var creatorStatus: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,6 +40,21 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private fun initView(){
         with(viewBinding){
+            btnPerson.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    creatorStatus = true
+//                    creator.isVisible = !noncreator.isVisible
+                    noncreator.visibility = View.INVISIBLE
+                    creator.visibility = View.VISIBLE
+
+                } else {
+                    creatorStatus = false
+//                    noncreator.isVisible = !creator.isVisible
+                    creator.visibility = View.INVISIBLE
+                    noncreator.visibility = View.VISIBLE
+
+                }
+            }
             btnBack.setOnClickListener {
                 it.hideKeyboard()
                 viewModelRegistrationFragment.goToBack()
@@ -55,8 +72,9 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                         val model = UsersDb(
                             login = viewBinding.loginReg.text.toString(),
                             password = viewBinding.passReg.text.toString(),
-                            isCreator = false
+                            isCreator = creatorStatus
                         )
+                        println("${model.isCreator}")
                         viewModelRegistrationFragment.register(model)
                         forToast()
                     }

@@ -22,19 +22,15 @@ class AuthViewModel(
         router.newRootScreen(Screens.routeToHomeFragment())
     }
 
-    fun creator(model: UsersDb){
-        repositorySQL.registerCreator(model.login)
-    }
-    fun creator0(model: UsersDb){
-        repositorySQL.registerCreator0(model.login)
-    }
-
     fun authentication(model: UsersDb) {
         _auth.value = false
         viewModelScope.launch(Dispatchers.IO) {
-            if (repositorySQL.checkAccount(model.login, model.password).login == model.login) {
+            if (repositorySQL.checkAccount(model.login, model.password) != null && repositorySQL.checkAccount(model.login, model.password)?.isCreator != true  )  {
                 _auth.value = true
-                router.newRootScreen(Screens.routeToListFragment())
+                router.newRootScreen(Screens.routeToListFragment(model.uuid))
+            }
+            else{
+                _auth.value = false
             }
         }
     }

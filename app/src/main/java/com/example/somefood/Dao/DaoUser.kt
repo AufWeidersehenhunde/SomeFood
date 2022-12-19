@@ -17,14 +17,10 @@ interface DaoUser {
     suspend fun checkLogin(log: String): String
 
     @Query("SELECT* FROM users WHERE login =:log AND password=:pass")
-    suspend fun checkAccount(log: String, pass: String): UsersDb
+    suspend fun checkAccount(log: String, pass: String): UsersDb?
 
-    @Query("UPDATE users SET isCreator = 1 WHERE login=:log")
-    fun registerCreator(log: String)
+    @Query("SELECT*FROM users WHERE uuid=:UUID")
+    fun checkStatus(UUID:String): UsersDb?
 
-    @Query("UPDATE users SET isCreator = 0 WHERE login=:log")
-    fun registerCreator0(log: String)
 
-    @Query("SELECT*FROM users WHERE isCreator=:log")
-    fun checkAn(log: String): String
 }

@@ -37,23 +37,14 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
         viewModelAuth.auth.collect {
             if (it) {
                 Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "Wrong password or login!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun initView() {
         with(viewBinding) {
-            btnPerson.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    person1.visibility = View.INVISIBLE
-                    person2.visibility = View.VISIBLE
-                } else {
-                    person2.visibility = View.INVISIBLE
-                    person1.visibility = View.VISIBLE
-                }
-            }
-
-
             btnBackToSplesh.setOnClickListener {
                 viewModelAuth.routeToBack()
                 it.hideKeyboard()
@@ -73,9 +64,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                         )
                         println("local$changesCreator")
                         viewModelAuth.authentication(model)
-                        if(person2.visibility == View.VISIBLE){
-                            viewModelAuth.creator(model)
-                        } else{viewModelAuth.creator0(model)}
+
                         forReal()
                     }
                 }

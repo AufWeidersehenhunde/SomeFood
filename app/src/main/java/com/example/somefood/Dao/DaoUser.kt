@@ -4,6 +4,7 @@ import android.os.Parcelable.Creator
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.DBandProvider.UsersDb
 import kotlinx.coroutines.flow.Flow
 
@@ -12,6 +13,9 @@ interface DaoUser {
 
     @Insert
     fun registerUser(usersDb: UsersDb)
+
+    @Query("SELECT*FROM food")
+    fun takeIt(): Flow<List<FoodDb>>
 
     @Query("SELECT login FROM users WHERE login =:log")
     suspend fun checkLogin(log: String): String
@@ -22,5 +26,7 @@ interface DaoUser {
     @Query("SELECT*FROM users WHERE uuid=:UUID")
     fun checkStatus(UUID:String): UsersDb?
 
+    @Insert
+    fun insertFoods(list: List<FoodDb>)
 
 }

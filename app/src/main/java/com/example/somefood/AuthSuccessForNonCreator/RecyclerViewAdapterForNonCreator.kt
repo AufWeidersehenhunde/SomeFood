@@ -3,6 +3,8 @@ package com.example.somefood.AuthSuccessForNonCreator
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.api.databinding.HuinyaBinding
 import com.example.api.databinding.RecyclerViewItemBinding
 import com.example.somefood.DBandProvider.FoodDb
 
@@ -15,12 +17,15 @@ class RecyclerViewAdapterForNonCreator:
         notifyDataSetChanged()
     }
 
-    class MyViewHolder(itemBinding: RecyclerViewItemBinding) :
+    class MyViewHolder(itemBinding: HuinyaBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         private val binding = itemBinding
         fun bind(food:FoodDb){
             binding.apply {
-                nameText.text = food.name
+                name.text = food.name
+                Glide.with(imageView.context)
+                    .load(food.image)
+                    .into(imageView)
             }
         }
         }
@@ -28,7 +33,7 @@ class RecyclerViewAdapterForNonCreator:
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemBinding =
-            RecyclerViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            HuinyaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(itemBinding)
     }
 

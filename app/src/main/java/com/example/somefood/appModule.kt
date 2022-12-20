@@ -8,7 +8,8 @@ import com.example.somefood.AuthAndAuthorize.AuthAndRegViewModel
 import com.example.somefood.AuthFragment.AuthViewModel
 import com.example.somefood.AuthSuccessForNonCreator.NonCreatorListViewModel
 import com.example.somefood.DBandProvider.DBprovider
-import com.example.somefood.DBandProvider.DataGenerator
+import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.Dao.DaoUser
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
 import com.example.somefood.repository.RepositorySQL
@@ -16,6 +17,7 @@ import com.github.terrakok.cicerone.Cicerone
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import java.io.File
 import java.util.concurrent.Executors
 
 
@@ -37,16 +39,31 @@ val appModule = module {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
                         //pre-populate data
+//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (230, 1, 222);")
+//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (231, 2, 222);")
+//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (232, 3, 222);")
+//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (234, 5, 222);")
+//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (233, 4, 222);")
                         Executors.newSingleThreadExecutor().execute {
-                            DBprovider.instance?.let {
-                                it.DaoUser().insertFoods(DataGenerator.getFoods())
-                            }
+                            get<DaoUser>().insertFoods(getFoods())
                         }
                     }
                 }).build()
+
+
         }
 
 
     single { get<DBprovider>().DaoUser() }
     single { RepositorySQL(get()) }
+
+
+}
+
+fun getFoods(): List<FoodDb>{
+    return listOf(
+        FoodDb("1", "Noma0n", "https://avatars.githubusercontent.com/u/1?v=4"),
+        FoodDb("2", "Noma1n", "https://rickandmortyapi.com/api/character/avatar/202.jpeg"),
+        FoodDb("3", "Noma2n", "https://rickandmortyapi.com/api/character/avatar/202.jpeg")
+    )
 }

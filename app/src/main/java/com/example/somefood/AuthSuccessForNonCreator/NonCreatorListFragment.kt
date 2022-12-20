@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.api.R
 import com.example.api.databinding.FragmentListBinding
@@ -35,8 +36,9 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             RecyclerViewAdapterForNonCreator()
 
         with(viewBinding.recyclerView) {
-            layoutManager = LinearLayoutManager(
-                context
+            layoutManager = GridLayoutManager(
+                context,
+                2
             )
             adapter = adapterHome
         }

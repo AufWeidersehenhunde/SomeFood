@@ -1,5 +1,6 @@
 package com.example.somefood.repository
 
+import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Dao.DaoUser
 

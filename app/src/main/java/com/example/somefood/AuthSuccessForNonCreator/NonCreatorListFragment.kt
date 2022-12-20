@@ -33,7 +33,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
         super.onViewCreated(view, savedInstanceState)
         check()
         this.adapterHome =
-            RecyclerViewAdapterForNonCreator()
+            RecyclerViewAdapterForNonCreator({viewListViewModel.putFoodToFavorite(it.uuid)}, {viewListViewModel.delFoodToFavorite(it.uuid)})
 
         with(viewBinding.recyclerView) {
             layoutManager = GridLayoutManager(

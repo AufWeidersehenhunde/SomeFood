@@ -39,11 +39,6 @@ val appModule = module {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
                         //pre-populate data
-//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (230, 1, 222);")
-//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (231, 2, 222);")
-//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (232, 3, 222);")
-//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (234, 5, 222);")
-//                        db.execSQL(/* sql = */ "INSERT INTO food VALUES (233, 4, 222);")
                         Executors.newSingleThreadExecutor().execute {
                             get<DaoUser>().insertFoods(getFoods())
                         }
@@ -56,14 +51,22 @@ val appModule = module {
 
     single { get<DBprovider>().DaoUser() }
     single { RepositorySQL(get()) }
-
-
 }
 
 fun getFoods(): List<FoodDb>{
     return listOf(
-        FoodDb("1", "Noma0n", "https://avatars.githubusercontent.com/u/1?v=4"),
-        FoodDb("2", "Noma1n", "https://rickandmortyapi.com/api/character/avatar/202.jpeg"),
-        FoodDb("3", "Noma2n", "https://rickandmortyapi.com/api/character/avatar/202.jpeg")
+        FoodDb("1", "Vegetable Shepherd's Pie", "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg", false),
+        FoodDb("2", "Peanut Butter Cheesecake", "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg",false),
+        FoodDb("3", "Christmas cake", "https://www.themealdb.com/images/media/meals/ldnrm91576791881.jpg",false),
+        FoodDb("4", "Rosół (Polish Chicken Soup)", "https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg",false),
+        FoodDb("5", "Eton Mess", "https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg",false),
+        FoodDb("6", "Japanese Katsudon", "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg",false),
+        FoodDb("7", "Chicken Karaage", "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg",false),
+        FoodDb("8", "Beef Bourguignon", "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg",false),
+        FoodDb("9", "Laksa King Prawn Noodles", "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg",false),
+        FoodDb("10", "Chicken Parmentier", "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",false),
+        FoodDb("11", "Beef and Mustard Pie", "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",false),
+        FoodDb("12", "Corned Beef and Cabbage", "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg",false),
+
     )
 }

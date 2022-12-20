@@ -34,9 +34,8 @@ class AuthAndRegFragment : Fragment(R.layout.fragment_auth_and_reg) {
         val registration : Boolean = arguments?.getBoolean(DATA)==true
         if (registration){
             Toast.makeText(context, "Регистрация прошла успешно", Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(context, "Иди нахуй брат", Toast.LENGTH_SHORT).show()
         }
+
     initView()
     }
 

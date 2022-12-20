@@ -29,4 +29,10 @@ interface DaoUser {
     @Insert
     fun insertFoods(list: List<FoodDb>)
 
+    @Query("UPDATE food SET isFavorite = 1 WHERE uuid =:uuid ")
+    suspend fun putInFavorite(uuid: String)
+
+    @Query("UPDATE food SET isFavorite = 0 WHERE uuid =:uuid ")
+    suspend fun delInFavorite(uuid: String)
+
 }

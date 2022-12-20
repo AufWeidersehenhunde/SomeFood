@@ -18,6 +18,17 @@ class NonCreatorListViewModel(
     private val _user = MutableStateFlow<UsersDb?>(null)
     val user: MutableStateFlow<UsersDb?> = _user
 
+    fun putFoodToFavorite(uuid:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositorySQL.putInFavorite(uuid)
+        }
+    }
+
+    fun delFoodToFavorite(uuid:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositorySQL.delInFavorite(uuid)
+        }
+    }
 
     fun checkStatus(uuid: String) {
         viewModelScope.launch(Dispatchers.IO) {

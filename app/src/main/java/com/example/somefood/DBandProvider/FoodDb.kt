@@ -8,7 +8,8 @@ import java.util.*
 
 @Entity(tableName = "food")
 data class FoodDb(
-    @PrimaryKey var uuid:String = UUID.randomUUID().toString(),
+    @PrimaryKey var uuid:String,
     @ColumnInfo(name = "name") val name: String = "3",
-    @ColumnInfo(name = "image") val image: String?
+    @ColumnInfo(name = "image") val image: String?,
+    @ColumnInfo(name = "isFavorite") val isFavorite:Boolean?
 )

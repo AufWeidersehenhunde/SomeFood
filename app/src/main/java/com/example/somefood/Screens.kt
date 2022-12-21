@@ -9,7 +9,6 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 object Screens {
     fun routeToHomeFragment() = FragmentScreen {AuthAndRegFragment()}
     fun routeToRegistrationFragment() = FragmentScreen{RegistrationFragment()}
-    fun routeToHomeFragmentAfterReg(result:Boolean)  = FragmentScreen{AuthAndRegFragment.getInstance(result)}
     fun routeToAuthFragment() = FragmentScreen{AuthFragment()}
     fun routeToListFragment(uuid:String) = FragmentScreen{NonCreatorListFragment.getInstance(uuid)}
 }

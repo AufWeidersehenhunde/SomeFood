@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.api.R
 import com.example.api.databinding.FragmentAuthBinding
 import com.example.somefood.DBandProvider.UsersDb
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +35,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
     }
 
     private suspend fun forReal() {
-        viewModelAuth.auth.collect {
+        viewModelAuth.auth.filterNotNull().collect {
             if (it) {
                 Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
             }else{

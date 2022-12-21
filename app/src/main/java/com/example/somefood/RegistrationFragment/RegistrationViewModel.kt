@@ -30,7 +30,7 @@ class RegistrationViewModel (
                 _regBoolean.value = true
             } else {
                 repositorySQL.registerUser(model)
-                router.newRootScreen(Screens.routeToHomeFragmentAfterReg(true))
+                router.navigateTo(Screens.routeToListFragment(model.uuid))
             }
         }
     }

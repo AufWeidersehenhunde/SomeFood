@@ -19,22 +19,9 @@ class AuthAndRegFragment : Fragment(R.layout.fragment_auth_and_reg) {
     private val viewModelAuth: AuthAndRegViewModel by viewModel()
     private val viewBinding: FragmentAuthAndRegBinding by viewBinding()
 
-    companion object {
-        private const val DATA = "BOOLEAN"
-        fun getInstance(data: Boolean) = AuthAndRegFragment().apply {
-            arguments = Bundle().apply {
-                putBoolean(DATA, data)
-            }
-        }
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val registration : Boolean = arguments?.getBoolean(DATA)==true
-        if (registration){
-            Toast.makeText(context, "Регистрация прошла успешно", Toast.LENGTH_SHORT).show()
-        }
 
     initView()
     }

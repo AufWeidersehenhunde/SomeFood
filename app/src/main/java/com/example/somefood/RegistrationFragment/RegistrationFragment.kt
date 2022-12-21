@@ -74,7 +74,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                             password = viewBinding.passReg.text.toString(),
                             isCreator = creatorStatus
                         )
-                        println("${model.isCreator}")
                         viewModelRegistrationFragment.register(model)
                         forToast()
                     }

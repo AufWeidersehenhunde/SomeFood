@@ -14,8 +14,8 @@ class AuthViewModel(
     private val router: Router,
     private val repositorySQL: RepositorySQL
 ) : ViewModel() {
-    private val _auth = MutableStateFlow(true)
-    val auth: MutableStateFlow<Boolean> = _auth
+    private val _auth = MutableStateFlow<Boolean?>(null)
+    val auth: MutableStateFlow<Boolean?> = _auth
 
 
     fun routeToBack() {
@@ -23,11 +23,10 @@ class AuthViewModel(
     }
 
     fun authentication(model: UsersDb) {
-        _auth.value = false
         viewModelScope.launch(Dispatchers.IO) {
             if (repositorySQL.checkAccount(model.login, model.password) != null && repositorySQL.checkAccount(model.login, model.password)?.isCreator != true  )  {
                 _auth.value = true
-                router.newRootScreen(Screens.routeToListFragment(model.uuid))
+                router.navigateTo(Screens.routeToListFragment(model.uuid))
             }
             else{
                 _auth.value = false

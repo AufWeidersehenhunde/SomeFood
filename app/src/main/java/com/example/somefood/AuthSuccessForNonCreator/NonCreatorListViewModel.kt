@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.DBandProvider.UsersDb
+import com.example.somefood.Screens
 import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,14 @@ class NonCreatorListViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             repositorySQL.putInFavorite(uuid)
         }
+    }
+
+    fun homeBack(uuid:String){
+        router.navigateTo(Screens.routeToListFragment(uuid))
+    }
+
+    fun profile(uuid: String){
+        router.navigateTo(Screens.routeToProfileFragment(uuid))
     }
 
     fun delFoodToFavorite(uuid:String){

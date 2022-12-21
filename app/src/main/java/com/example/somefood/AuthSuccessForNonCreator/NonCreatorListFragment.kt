@@ -42,8 +42,24 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             )
             adapter = adapterHome
         }
+        val profileId = arguments?.getString(DATA)
+        viewBinding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.profile -> {viewListViewModel.profile(profileId.toString())
+                    return@setOnItemSelectedListener true
+                }
+                R.id.btnHome -> {viewListViewModel.homeBack(profileId.toString())
+                return@setOnItemSelectedListener true
+            }
+                else -> {
+                    return@setOnItemSelectedListener false
+                }
+            }
+        }
         observeElement()
     }
+
+
     private fun observeElement() {
         viewListViewModel.listFoods.onEach {
             adapterHome?.set(it)

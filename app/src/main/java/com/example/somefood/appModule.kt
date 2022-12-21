@@ -12,6 +12,7 @@ import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.Dao.DaoUser
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
+import com.example.somefood.profileFragment.ProfileViewModel
 import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Cicerone
 import org.koin.android.ext.koin.androidApplication
@@ -30,6 +31,7 @@ val appModule = module {
     viewModel { AuthAndRegViewModel(get()) }
     viewModel { AuthViewModel(get(), get()) }
     viewModel { NonCreatorListViewModel(get(),get()) }
+    viewModel { ProfileViewModel(get(), get()) }
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

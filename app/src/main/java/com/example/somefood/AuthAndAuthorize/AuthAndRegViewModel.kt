@@ -12,10 +12,10 @@ private val router: Router
 ) : ViewModel() {
 
    fun routeToReg(){
-       router.newRootScreen(Screens.routeToRegistrationFragment())
+       router.navigateTo(Screens.routeToRegistrationFragment())
 
    }
     fun routeToAuth(){
-        router.newRootScreen(Screens.routeToAuthFragment())
+        router.navigateTo(Screens.routeToAuthFragment())
     }
 }

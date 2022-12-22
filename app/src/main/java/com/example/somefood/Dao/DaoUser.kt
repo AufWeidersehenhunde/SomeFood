@@ -35,4 +35,7 @@ interface DaoUser {
     @Query("UPDATE food SET isFavorite = 0 WHERE uuid =:uuid ")
     suspend fun delInFavorite(uuid: String)
 
+    @Query("SELECT*FROM users WHERE uuid=:uuid")
+    fun takeProfileInfo(uuid:String):Flow<UsersDb>
+
 }

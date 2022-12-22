@@ -30,13 +30,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.9" />
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewForCloud"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="201dp"
+        app:cardCornerRadius="20dp"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewImage"
@@ -63,60 +69,83 @@
                 app:civ_border_width="2dp" />
         </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/black"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardViewImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardViewForCloud">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/black"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="195dp"
-        app:cardBackgroundColor="@color/black"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardViewForCloud"
-        app:layout_constraintVertical_bias="0.0">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/id_name_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/grey"
+                android:layout_marginVertical="42dp"
+                tools:layout_editor_absoluteX="-19dp">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@drawable/ic_baseline_star_24"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"/>
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="20dp"
-            android:text="5/5"
-            android:textSize="18sp"
-            android:gravity="end"
-            android:textColor="@color/white"
-            android:layout_marginTop="24dp"
-            />
+                <TextView
+                    android:id="@+id/profile_name_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginRight="90dp"
+                    android:gravity="center"
+                    android:text="Alexey"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/id_text_input_layout"
+                    app:layout_constraintTop_toTopOf="@+id/id_text_input_layout"
+                    tools:layout_editor_absoluteX="0dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/ic_baseline_star_24" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="36dp"
+                android:layout_marginVertical="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:gravity="end"
+                android:text="5/5"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="515dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnProfileBack"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/black">
+        app:layout_constraintTop_toBottomOf="@+id/cardViewForCloud">
 
         <RelativeLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="5000dp"
-            android:layout_marginTop="22dp"
             android:background="@color/grey">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewInfo"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/cardViewOrders"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
@@ -124,79 +153,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.6">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/id_text_input_layout"
+                <EditText
+                    android:id="@+id/text_info"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@color/grey"
-                    tools:layout_editor_absoluteX="-19dp">
-
-                    <TextView
-                        android:id="@+id/profile_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="fill_vertical"
-                        android:text="error"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/id_text_input_layout"
-                        app:layout_constraintTop_toTopOf="@+id/id_text_input_layout"
-                        tools:layout_editor_absoluteX="0dp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/login_text_input_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="90dp"
-                    android:background="@color/grey"
-                    app:layout_constraintTop_toBottomOf="@+id/login_text_input_layout"
-                    tools:layout_editor_absoluteX="-19dp">
-
-                    <TextView
-                        android:id="@+id/profile_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="fill_vertical"
-                        android:text="error"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/login_text_input_layout"
-                        app:layout_constraintTop_toTopOf="@+id/login_text_input_layout"
-                        tools:layout_editor_absoluteX="0dp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password_text_input_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="150dp"
-                    app:layout_constraintTop_toBottomOf="@+id/login_text_input_layout"
-                    app:passwordToggleEnabled="true"
-                    tools:layout_editor_absoluteX="-19dp">
-
-                    <EditText
-                        android:id="@+id/profile_pass"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:ems="10"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        app:layout_constraintBottom_toBottomOf="@+id/password_text_input_layout"
-                        app:layout_constraintTop_toTopOf="@+id/password_text_input_layout"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent"
+                    android:hint="Description"
+                    android:textSize="18sp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    />
 
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewOrders"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="120dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
@@ -231,6 +203,52 @@
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/previewData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal data"
+                android:textSize="18sp"
+                android:background="@color/blue"
+                android:layout_below="@+id/cardViewInfo"
+                android:layout_marginTop="5dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@+id/previewData"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="20dp">
+<!--                last addres-->
+<!--                last otziv-->
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+                <TextView
+                    android:id="@+id/idProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Your id: "
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/loginProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:text="gg"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="0dp" />
+
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
     </ScrollView>

@@ -17,6 +17,8 @@ class RepositorySQL (
 
     fun takeIt() = User.takeIt()
 
+    fun takeProfileInfo(uuid: String) = User.takeProfileInfo(uuid)
+
     suspend fun putInFavorite(uuid:String) = User.putInFavorite(uuid)
 
     suspend fun delInFavorite(uuid: String) = User.delInFavorite(uuid)

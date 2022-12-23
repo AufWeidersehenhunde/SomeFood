@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.example.api.R
 import com.example.api.databinding.FragmentProfileBinding
 import kotlinx.coroutines.flow.collect
@@ -58,6 +59,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
                 false
             }
+
+            Glide.with(imageViewProfile.context)
+                .load(R.drawable.faceanime)
+                .into(imageViewProfile)
            btnProfileApply.setOnClickListener {
                if (btnBoolean==true) {
                    it.hideKeyboard()

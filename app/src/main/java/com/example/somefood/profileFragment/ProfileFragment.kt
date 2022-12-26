@@ -51,26 +51,63 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
             }
 
+
+
             textInfo.setOnTouchListener { _, event ->
                 if (MotionEvent.ACTION_UP == event.action) {
                     textInfo.setText("${textInfo.text}")
                     btnBoolean = true
-
                 }
                 false
             }
 
+            profileNameHeader.setOnTouchListener { _, event ->
+                if (MotionEvent.ACTION_UP == event.action){
+                    profileNameHeader.setText("${profileNameHeader.text}")
+                    btnBoolean = true
+                }
+                false
+            }
+
+            addressProfile.setOnTouchListener { _, event ->
+                if (MotionEvent.ACTION_UP == event.action) {
+                    addressProfile.setText("${addressProfile.text}")
+                    btnBoolean = true
+                }
+                false
+            }
+
+
             Glide.with(imageViewProfile.context)
                 .load(R.drawable.faceanime)
                 .into(imageViewProfile)
+
+            Glide.with(imageViewLastFeedback.context)
+                .load(R.drawable.aheg)
+                .into(imageViewLastFeedback)
+
            btnProfileApply.setOnClickListener {
                if (btnBoolean==true) {
                    it.hideKeyboard()
-                   textInfo.setText("${textInfo.text}")
-                   btnBoolean = false
-                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                       textInfo.focusable = View.NOT_FOCUSABLE
+                   with(viewModelProfile) {
+                       textInfo.setText("${textInfo.text}")
+                       setDescription(
+                           textInfo.text.toString(),
+                           profileId.toString()
+                       )
+                       profileNameHeader.setText("${profileNameHeader.text}")
+                       setName(
+                           profileNameHeader.text.toString(),
+                           profileId.toString()
+                       )
+                       addressProfile.setText("${addressProfile.text}")
+                       setAddress(
+                           addressProfile.text.toString(),
+                           profileId.toString()
+                       )
                    }
+                   btnBoolean = false
+
                }
                else{
                    viewModelProfile.goBack(profileId.toString())
@@ -92,8 +129,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModelProfile.profile.filterNotNull().collect {
-                    viewBinding.idProfile.text = "Your id: ${it.uuid}"
-                    viewBinding.loginProfile.text = "Your login: ${it.login}"
+                    with(viewBinding) {
+                        idProfile.text = "${it.uuid}"
+                        loginProfile.text = " ${it.login}"
+                        profileNameHeader.setText("${it.name}")
+                        textInfo.setText("${it.description}")
+                        addressProfile.setText("${it.address}")
+                        mark.text = "${it.mark}/5"
+                    }
                 }
             }
         }

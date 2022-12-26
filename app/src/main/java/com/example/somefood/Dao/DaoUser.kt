@@ -1,6 +1,5 @@
 package com.example.somefood.Dao
 
-import android.os.Parcelable.Creator
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -38,4 +37,14 @@ interface DaoUser {
     @Query("SELECT*FROM users WHERE uuid=:uuid")
     fun takeProfileInfo(uuid:String):Flow<UsersDb>
 
+
+    //profileinfo dao
+    @Query("UPDATE users SET name =:name WHERE uuid=:uuid")
+    suspend fun insertName(name:String, uuid:String)
+
+    @Query("UPDATE users SET description =:des WHERE uuid=:uuid")
+    suspend fun insertDescription(des:String, uuid:String)
+
+    @Query("UPDATE users SET address =:address WHERE uuid=:uuid")
+    suspend fun insertAddress(address:String, uuid:String)
 }

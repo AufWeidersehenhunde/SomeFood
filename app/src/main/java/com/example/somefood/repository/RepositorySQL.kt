@@ -1,6 +1,5 @@
 package com.example.somefood.repository
 
-import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Dao.DaoUser
 
@@ -22,6 +21,14 @@ class RepositorySQL (
     suspend fun putInFavorite(uuid:String) = User.putInFavorite(uuid)
 
     suspend fun delInFavorite(uuid: String) = User.delInFavorite(uuid)
+
+
+    // profileinfo
+    suspend fun insertName(name:String, uuid: String) = User.insertName(name, uuid)
+
+    suspend fun insertDescription(des:String, uuid: String) = User.insertDescription(des, uuid)
+
+    suspend fun insertAddress(address:String, uuid: String) = User.insertAddress(address, uuid)
 
 
 }

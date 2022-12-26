@@ -22,6 +22,24 @@ class ProfileViewModel (
         router.backTo(Screens.routeToListFragment(uuid))
     }
 
+    fun setName(name:String, uuid: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositorySQL.insertName(name,uuid)
+        }
+    }
+
+    fun setDescription(des:String, uuid:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositorySQL.insertDescription(des, uuid)
+        }
+    }
+
+    fun setAddress(address:String, uuid:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositorySQL.insertAddress(address, uuid)
+        }
+    }
+
     fun takeProfileInfo(uuid: String){
         viewModelScope.launch(Dispatchers.IO) {
             repositorySQL.takeProfileInfo(uuid).collect{

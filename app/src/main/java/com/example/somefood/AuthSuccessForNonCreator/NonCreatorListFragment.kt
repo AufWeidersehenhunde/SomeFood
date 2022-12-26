@@ -66,6 +66,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
+
     private fun check() {
         val id = arguments?.getString(DATA)
         viewLifecycleOwner.lifecycleScope.launch {

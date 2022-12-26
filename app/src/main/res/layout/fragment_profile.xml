@@ -172,10 +172,10 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp">
                 <EditText
-                    android:id="@+id/text_info"
+                    android:id="@+id/addressProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Description"
+                    android:hint="Your address"
                     android:textColorLink="@color/grey"
                     android:textColorHint="@color/grey"
                     android:textColor="@color/black"
@@ -390,7 +390,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:text="Your address:"
+                        android:text="About you:"
                         android:ellipsize="middle"
                         android:maxLines="3"
                         android:textSize="18sp"
@@ -398,11 +398,11 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/loginProfile" />
                     <EditText
-                        android:id="@+id/addressProfile"
+                        android:id="@+id/text_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:hint="bastard street"
+                        android:hint="Description"
                         android:textSize="18sp"
                         android:background="@color/grey"
                         android:textColorHint="@color/grey"

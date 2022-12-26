@@ -47,4 +47,6 @@ interface DaoUser {
 
     @Query("UPDATE users SET address =:address WHERE uuid=:uuid")
     suspend fun insertAddress(address:String, uuid:String)
+
+    // favorite
 }

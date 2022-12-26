@@ -17,13 +17,15 @@ class NonCreatorListViewModel(
 ) : ViewModel() {
     val listFoods = MutableStateFlow<List<FoodDb>>(emptyList())
     private val _user = MutableStateFlow<UsersDb?>(null)
-    val user: MutableStateFlow<UsersDb?> = _user
+    val favoriteFood = MutableStateFlow<FoodDb?>(null)
 
     fun putFoodToFavorite(uuid:String){
         viewModelScope.launch(Dispatchers.IO) {
             repositorySQL.putInFavorite(uuid)
         }
     }
+
+
 
     fun homeBack(uuid:String){
         router.navigateTo(Screens.routeToListFragment(uuid))
@@ -47,6 +49,7 @@ class NonCreatorListViewModel(
     init {
         observe()
     }
+
     fun observe() {
         viewModelScope.launch {
             repositorySQL.takeIt().collect {

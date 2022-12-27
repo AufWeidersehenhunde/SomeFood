@@ -51,7 +51,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                 it.hideKeyboard()
             }
 
-            btnVhod.setOnClickListener {
+            btnSignin.setOnClickListener {
                 viewLifecycleOwner.lifecycleScope.launch {
                     if (passAuth.text.toString() == "") {
                         Toast.makeText(context, "Введите пароль!!!", Toast.LENGTH_SHORT).show()

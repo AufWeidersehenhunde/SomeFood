@@ -2,8 +2,11 @@ package com.example.somefood.Dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.DBandProvider.Orders
 import com.example.somefood.DBandProvider.UsersDb
 import kotlinx.coroutines.flow.Flow
 
@@ -49,4 +52,13 @@ interface DaoUser {
     suspend fun insertAddress(address:String, uuid:String)
 
     // favorite
+    @Insert
+    suspend fun addFoodToFavorite(model:Orders)
+
+    @Query("SELECT* FROM favorites")
+     fun takeFavorite():Flow<Orders?>
+
+     @Query("SELECT*FROM food WHERE uuid=:it")
+     suspend fun revertToFavorite(it:String): List<FoodDb?>
+
 }

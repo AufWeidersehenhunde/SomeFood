@@ -43,13 +43,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             btnPerson.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     creatorStatus = true
-//                    creator.isVisible = !noncreator.isVisible
                     noncreator.visibility = View.INVISIBLE
                     creator.visibility = View.VISIBLE
 
                 } else {
                     creatorStatus = false
-//                    noncreator.isVisible = !creator.isVisible
                     creator.visibility = View.INVISIBLE
                     noncreator.visibility = View.VISIBLE
 

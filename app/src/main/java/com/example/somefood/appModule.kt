@@ -10,6 +10,7 @@ import com.example.somefood.AuthSuccessForNonCreator.NonCreatorListViewModel
 import com.example.somefood.DBandProvider.DBprovider
 import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.Dao.DaoUser
+import com.example.somefood.FavoriteFragment.FavoriteViewModel
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
 import com.example.somefood.profileFragment.ProfileViewModel
@@ -32,6 +33,7 @@ val appModule = module {
     viewModel { AuthViewModel(get(), get()) }
     viewModel { NonCreatorListViewModel(get(),get()) }
     viewModel { ProfileViewModel(get(), get()) }
+    viewModel { FavoriteViewModel(get(), get())}
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

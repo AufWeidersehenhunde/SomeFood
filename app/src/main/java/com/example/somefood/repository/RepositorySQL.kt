@@ -1,6 +1,7 @@
 package com.example.somefood.repository
 
 import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.DBandProvider.Orders
 import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Dao.DaoUser
 
@@ -32,6 +33,13 @@ class RepositorySQL (
     suspend fun insertAddress(address:String, uuid: String) = User.insertAddress(address, uuid)
 
     //favorite
-    suspend fun addToFavorite(it:FoodDb, uuid: String) = User.addToFavorite(it, uuid)
+    fun takeFavorite() = User.takeFavorite()
+
+    suspend fun addFoodToFavorite(uuid:String, id:String) {
+        val model = Orders(idFood = uuid, idUser = id)
+    }
+
+    suspend fun revertToFavorite(it:String) = User.revertToFavorite(it)
+
 
 }

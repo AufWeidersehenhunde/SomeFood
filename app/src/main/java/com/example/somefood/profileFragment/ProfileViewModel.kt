@@ -13,9 +13,9 @@ import kotlinx.coroutines.launch
 class ProfileViewModel (
     private val router: Router,
     private val repositorySQL: RepositorySQL
-): ViewModel() {
+ ): ViewModel() {
     private val _profile = MutableStateFlow<UsersDb?>(null)
-    val profile:MutableStateFlow<UsersDb?> = _profile
+    val profile: MutableStateFlow<UsersDb?> = _profile
 
 
     fun goBack(uuid:String){

@@ -32,8 +32,9 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         check()
+        val profileId = arguments?.getString(DATA)
         this.adapterHome =
-            RecyclerViewAdapterForNonCreator({viewListViewModel.putFoodToFavorite(it.uuid)}, {viewListViewModel.delFoodToFavorite(it.uuid)})
+            RecyclerViewAdapterForNonCreator({viewListViewModel.putFoodToFavorite(it.uuid, profileId.toString())})
 
         with(viewBinding.recyclerView) {
             layoutManager = GridLayoutManager(
@@ -42,7 +43,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             )
             adapter = adapterHome
         }
-        val profileId = arguments?.getString(DATA)
+
         viewBinding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.profile -> {viewListViewModel.profile(profileId.toString())
@@ -51,6 +52,9 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                 R.id.btnHome -> {viewListViewModel.homeBack(profileId.toString())
                 return@setOnItemSelectedListener true
             }
+                R.id.btnFavorite -> {viewListViewModel.routeToFavorite(profileId.toString())
+                    return@setOnItemSelectedListener true
+                }
                 else -> {
                     return@setOnItemSelectedListener false
                 }

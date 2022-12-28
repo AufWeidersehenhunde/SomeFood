@@ -20,8 +20,6 @@ class RepositorySQL (
 
     fun takeProfileInfo(uuid: String) = User.takeProfileInfo(uuid)
 
-    suspend fun putInFavorite(uuid:String) = User.putInFavorite(uuid)
-
     suspend fun delInFavorite(uuid: String) = User.delInFavorite(uuid)
 
 
@@ -35,11 +33,10 @@ class RepositorySQL (
     //favorite
     fun takeFavorite() = User.takeFavorite()
 
-    suspend fun addFoodToFavorite(uuid:String, id:String) {
+    fun addFoodToFavorite(uuid:String, id:String) {
         val model = Orders(idFood = uuid, idUser = id)
     }
 
     suspend fun revertToFavorite(it:String) = User.revertToFavorite(it)
-
 
 }

@@ -28,8 +28,8 @@ class AuthViewModel(
             if (repositorySQL.checkAccount(model.login, model.password) != null && repositorySQL.checkAccount(model.login, model.password)?.isCreator != true  )  {
                 _auth.value = true
                 forId.value = repositorySQL.checkAccount(model.login, model.password)
-                forId.value?.let { Screens.routeToListFragment(it.uuid) }
-                    ?.let { router.navigateTo(it) }
+                forId.value?.let { Screens.routeToFragmentContainer(it.uuid) }
+                    ?.let { router.newRootScreen(it) }
             }
             else{
                 _auth.value = false

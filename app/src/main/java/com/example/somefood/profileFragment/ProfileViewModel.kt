@@ -18,10 +18,6 @@ class ProfileViewModel (
     val profile: MutableStateFlow<UsersDb?> = _profile
 
 
-    fun goBack(uuid:String){
-        router.backTo(Screens.routeToListFragment(uuid))
-    }
-
     fun setName(name:String, uuid: String){
         viewModelScope.launch(Dispatchers.IO) {
             repositorySQL.insertName(name,uuid)

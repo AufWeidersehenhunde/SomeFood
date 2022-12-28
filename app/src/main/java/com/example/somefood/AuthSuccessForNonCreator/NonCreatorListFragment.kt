@@ -44,22 +44,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             adapter = adapterHome
         }
 
-        viewBinding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.profile -> {viewListViewModel.profile(profileId.toString())
-                    return@setOnItemSelectedListener true
-                }
-                R.id.btnHome -> {viewListViewModel.homeBack(profileId.toString())
-                return@setOnItemSelectedListener true
-            }
-                R.id.btnFavorite -> {viewListViewModel.routeToFavorite(profileId.toString())
-                    return@setOnItemSelectedListener true
-                }
-                else -> {
-                    return@setOnItemSelectedListener false
-                }
-            }
-        }
+
         observeElement()
     }
 

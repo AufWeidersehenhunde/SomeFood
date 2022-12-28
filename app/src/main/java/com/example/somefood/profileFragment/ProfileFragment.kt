@@ -33,6 +33,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val profileId = arguments?.getString(DATA)
@@ -40,19 +41,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewModelProfile.takeProfileInfo(profileId)
         }
         with(viewBinding) {
-            btnProfileBack.setOnClickListener {
-                if (btnBoolean==true) {
-                    it.hideKeyboard()
-                    textInfo.setText("${viewBinding.textInfo.text}")
-                    btnBoolean = false
-                }
-                else{
-                    viewModelProfile.goBack(profileId.toString())
-                }
-            }
-
-
-
             textInfo.setOnTouchListener { _, event ->
                 if (MotionEvent.ACTION_UP == event.action) {
                     textInfo.setText("${textInfo.text}")
@@ -85,34 +73,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             Glide.with(imageViewLastFeedback.context)
                 .load(R.drawable.aheg)
                 .into(imageViewLastFeedback)
-
-           btnProfileApply.setOnClickListener {
-               if (btnBoolean==true) {
-                   it.hideKeyboard()
-                   with(viewModelProfile) {
-                       textInfo.setText("${textInfo.text}")
-                       setDescription(
-                           textInfo.text.toString(),
-                           profileId.toString()
-                       )
-                       profileNameHeader.setText("${profileNameHeader.text}")
-                       setName(
-                           profileNameHeader.text.toString(),
-                           profileId.toString()
-                       )
-                       addressProfile.setText("${addressProfile.text}")
-                       setAddress(
-                           addressProfile.text.toString(),
-                           profileId.toString()
-                       )
-                   }
-                   btnBoolean = false
-
-               }
-               else{
-                   viewModelProfile.goBack(profileId.toString())
-               }
-           }
             takeItTwo()
         }
     }

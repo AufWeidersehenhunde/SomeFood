@@ -13,6 +13,7 @@ import com.example.somefood.Dao.DaoUser
 import com.example.somefood.FavoriteFragment.FavoriteViewModel
 import com.example.somefood.MainActivity.MainActivityViewModel
 import com.example.somefood.RegistrationFragment.RegistrationViewModel
+import com.example.somefood.fragmentContainer.ChildViewModel
 import com.example.somefood.profileFragment.ProfileViewModel
 import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Cicerone
@@ -34,6 +35,7 @@ val appModule = module {
     viewModel { NonCreatorListViewModel(get(),get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { FavoriteViewModel(get(), get())}
+    viewModel { ChildViewModel(get(),get()) }
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

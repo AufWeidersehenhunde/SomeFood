@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import by.kirich1409.viewbindingdelegate.internal.findRootView
 import com.example.api.R
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.api.databinding.FragmentFavoriteBinding
@@ -45,8 +46,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
             )
             adapter = adapterFavorite
         }
-
     }
+
     private fun observeElement() {
         viewModelFavorite.listFoods.onEach {
             adapterFavorite?.set(it)

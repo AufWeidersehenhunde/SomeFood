@@ -42,6 +42,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                 2
             )
             adapter = adapterHome
+
         }
 
 

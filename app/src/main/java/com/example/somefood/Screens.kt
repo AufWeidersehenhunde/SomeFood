@@ -15,6 +15,7 @@ object Screens {
     fun routeToAuthFragment() = FragmentScreen { AuthFragment() }
     fun routeToListFragment(uuid: String) =
         FragmentScreen { NonCreatorListFragment.getInstance(uuid) }
+    fun proverka() = FragmentScreen{NonCreatorListFragment()}
 
     fun routeToProfileFragment(uuid: String) = FragmentScreen { ProfileFragment.getInstance(uuid) }
     fun routeToFavoriteFragment(uuid: String) =

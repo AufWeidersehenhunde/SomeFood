@@ -73,6 +73,5 @@ fun getFoods(): List<FoodDb>{
         FoodDb("10", "Chicken Parmentier", "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",false),
         FoodDb("11", "Beef and Mustard Pie", "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",false),
         FoodDb("12", "Corned Beef and Cabbage", "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg",false),
-
     )
 }

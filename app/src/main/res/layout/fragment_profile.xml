@@ -84,7 +84,16 @@
                     app:layout_constraintTop_toTopOf="@+id/id_text_input_layout"
                     tools:layout_editor_absoluteX="0dp" />
 
-
+            <ImageView
+                android:id="@+id/acceptName"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="40dp"
+                android:visibility="gone"
+                android:background="@drawable/ic_baseline_save_24"
+                />
 
             <ImageView
                 android:layout_width="24dp"
@@ -148,14 +157,28 @@
                     android:paddingRight="20dp">
                 <EditText
                     android:id="@+id/addressProfile"
-                    android:layout_width="match_parent"
+                    android:layout_width="330dp"
                     android:layout_height="match_parent"
                     android:hint="Your address"
                     android:textColorLink="@color/grey"
                     android:textColorHint="@color/grey"
                     android:textColor="@color/black"
                     android:textSize="18sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     />
+                    <ImageView
+                        android:id="@+id/acceptAddress"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:visibility="gone"
+                        android:background="@drawable/ic_baseline_save_24"
+                        app:layout_constraintStart_toEndOf="@+id/addressProfile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -360,7 +383,7 @@
 
 
                     <TextView
-                        android:id="@+id/addressProfileText"
+                        android:id="@+id/descriptionProfileText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -372,6 +395,13 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/loginProfile" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionProfileText"
+                        >
                     <EditText
                         android:id="@+id/text_info"
                         android:layout_width="match_parent"
@@ -383,9 +413,19 @@
                         android:textColorHint="@color/grey"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/acceptDescription"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/addressProfileText" />
+                         />
+                    <ImageView
+                        android:id="@+id/acceptDescription"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:visibility="gone"
+                        android:background="@drawable/ic_baseline_save_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

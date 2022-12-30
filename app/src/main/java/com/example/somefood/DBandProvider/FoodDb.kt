@@ -10,6 +10,5 @@ import java.util.*
 data class FoodDb(
     @PrimaryKey var uuid:String,
     @ColumnInfo(name = "name") val name: String = "3",
-    @ColumnInfo(name = "image") val image: String?,
-    @ColumnInfo(name = "isFavorite") val isFavorite:Boolean?
+    @ColumnInfo(name = "image") val image: String?
 )

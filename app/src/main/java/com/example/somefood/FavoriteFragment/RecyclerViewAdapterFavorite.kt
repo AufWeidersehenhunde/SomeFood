@@ -28,11 +28,7 @@ class RecyclerViewAdapterFavorite: RecyclerView.Adapter<RecyclerViewAdapterFavor
                 btnAddToFavourite.setOnClickListener {
 
                 }
-                if (food.isFavorite == true) {
-                    viewBtnAddToFavourite.setColorFilter(Color.RED)
-                } else {
-                    viewBtnAddToFavourite.setColorFilter(Color.WHITE)
-                }
+
             }
 
         }

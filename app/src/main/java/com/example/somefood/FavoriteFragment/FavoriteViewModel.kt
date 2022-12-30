@@ -2,8 +2,8 @@ package com.example.somefood.FavoriteFragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.somefood.DBandProvider.FavoriteFoods
 import com.example.somefood.DBandProvider.FoodDb
-import com.example.somefood.DBandProvider.Orders
 import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,17 +15,17 @@ class FavoriteViewModel (
 ) : ViewModel() {
     private val _listFoods = MutableStateFlow<List<FoodDb>>(emptyList())
     val listFoods:MutableStateFlow<List<FoodDb>> = _listFoods
-    private val list = MutableStateFlow<List<String>>(emptyList())
+    val list = MutableStateFlow<List<FavoriteFoods>?>(null)
 
 
-    fun takeFavorite(){
+    private fun takeFavorite(){
         viewModelScope.launch {
-            repositorySQL.takeFavorite().collect{
-                it?.idFood?.let { it1 -> repositorySQL.revertToFavorite(it1) }
-                println("444$it" )
+            repositorySQL.takeFavorite()?.collect{
+                list.value = listOf(it)
+            }
             }
         }
-    }
+
 
 
 

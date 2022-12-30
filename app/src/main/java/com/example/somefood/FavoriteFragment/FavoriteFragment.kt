@@ -53,10 +53,4 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
             adapterFavorite?.set(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
-
-
-
-
-
-
 }

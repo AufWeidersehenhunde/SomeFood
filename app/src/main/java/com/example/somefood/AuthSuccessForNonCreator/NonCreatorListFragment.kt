@@ -26,27 +26,32 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             arguments = Bundle().apply {
                 putString(DATA, data)
             }
+            println("dds2${arguments?.getString(DATA)}")
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        check()
-        val profileId = arguments?.getString(DATA)
-        this.adapterHome =
-            RecyclerViewAdapterForNonCreator({viewListViewModel.putFoodToFavorite(it.uuid, profileId.toString())})
+        if (savedInstanceState == null) {
+            check()
+            observeElement()
+            val profileId = arguments?.getString(DATA)
+            adapterHome =
+                RecyclerViewAdapterForNonCreator({
+                    if (profileId != null) {
+                        viewListViewModel.putFoodToFavorite(it.uuid, profileId)
+                    }
+                })
 
-        with(viewBinding.recyclerView) {
-            layoutManager = GridLayoutManager(
-                context,
-                2
-            )
-            adapter = adapterHome
+            with(viewBinding.recyclerView) {
+                layoutManager = GridLayoutManager(
+                    context,
+                    2
+                )
+                adapter = adapterHome
 
+            }
         }
-
-
-        observeElement()
     }
 
 

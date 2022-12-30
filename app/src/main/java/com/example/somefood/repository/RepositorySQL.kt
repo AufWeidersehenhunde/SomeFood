@@ -1,6 +1,6 @@
 package com.example.somefood.repository
 
-import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.DBandProvider.FavoriteFoods
 import com.example.somefood.DBandProvider.Orders
 import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Dao.DaoUser
@@ -20,10 +20,8 @@ class RepositorySQL (
 
     fun takeProfileInfo(uuid: String) = User.takeProfileInfo(uuid)
 
-    suspend fun delInFavorite(uuid: String) = User.delInFavorite(uuid)
 
-
-    // profileinfo
+    // profile info
     suspend fun insertName(name:String, uuid: String) = User.insertName(name, uuid)
 
     suspend fun insertDescription(des:String, uuid: String) = User.insertDescription(des, uuid)
@@ -34,9 +32,14 @@ class RepositorySQL (
     fun takeFavorite() = User.takeFavorite()
 
     fun addFoodToFavorite(uuid:String, id:String) {
-        val model = Orders(idFood = uuid, idUser = id)
+        val model = FavoriteFoods(idFood = uuid, idUser = id)
+        User.addFoodToFavorite(model)
     }
 
-    suspend fun revertToFavorite(it:String) = User.revertToFavorite(it)
+    fun addFoodToOrder(uuid:String, id:String) {
+        val model = Orders(idFood = uuid, idUser = id, time = null)
+    }
+
+    suspend fun takeFavorite(it:String) = User.revertToFavorite(it)
 
 }

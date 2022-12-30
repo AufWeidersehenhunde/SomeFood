@@ -5,10 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "orders")
-data class Orders(
+@Entity(tableName = "favorites")
+data class FavoriteFoods(
     @PrimaryKey var number:String = UUID.randomUUID().toString(),
     @ColumnInfo(name = "idFood") val idFood:String = "polska",
-    @ColumnInfo(name = "idUser") val idUser:String = "kurwa",
-    @ColumnInfo(name = "time") val time:Int?
+    @ColumnInfo(name = "idUser") val idUser:String = "kurwa"
 )

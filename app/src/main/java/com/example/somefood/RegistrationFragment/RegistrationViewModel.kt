@@ -8,7 +8,6 @@ import com.example.somefood.repository.RepositorySQL
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel (
@@ -20,8 +19,9 @@ class RegistrationViewModel (
             var regBoolean : MutableStateFlow<Boolean> = _regBoolean
 
     fun goToBack(){
-                router.newRootScreen(Screens.routeToHomeFragment())
-            }
+        //swipe back button is not active
+        router.navigateTo(Screens.routeToHomeFragment())
+    }
 
     fun register(model: UsersDb){
         _regBoolean.value = false
@@ -30,7 +30,7 @@ class RegistrationViewModel (
                 _regBoolean.value = true
             } else {
                 repositorySQL.registerUser(model)
-                router.navigateTo(Screens.routeToListFragment(model.uuid))
+                router.navigateTo(Screens.routeToFragmentContainer(model.uuid))
             }
         }
     }

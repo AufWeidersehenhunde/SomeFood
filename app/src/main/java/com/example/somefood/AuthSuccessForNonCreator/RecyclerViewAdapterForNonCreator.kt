@@ -29,11 +29,6 @@ class RecyclerViewAdapterForNonCreator (private var favorite: (FoodDb) -> Unit):
                 btnAddToFavourite.setOnClickListener {
                     favorite(food)
                 }
-                if (food.isFavorite == true) {
-                    viewBtnAddToFavourite.setColorFilter(Color.RED)
-                } else {
-                    viewBtnAddToFavourite.setColorFilter(Color.WHITE)
-                }
             }
 
         }

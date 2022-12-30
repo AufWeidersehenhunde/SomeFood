@@ -14,7 +14,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.api.R
 import com.example.api.databinding.FragmentProfileBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,6 +44,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (MotionEvent.ACTION_UP == event.action) {
                     textInfo.setText("${textInfo.text}")
                     btnBoolean = true
+                    acceptDescription.visibility = View.VISIBLE
                 }
                 false
             }
@@ -53,6 +53,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (MotionEvent.ACTION_UP == event.action){
                     profileNameHeader.setText("${profileNameHeader.text}")
                     btnBoolean = true
+                    acceptName.visibility = View.VISIBLE
                 }
                 false
             }
@@ -61,10 +62,45 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (MotionEvent.ACTION_UP == event.action) {
                     addressProfile.setText("${addressProfile.text}")
                     btnBoolean = true
+                    acceptAddress.visibility = View.VISIBLE
                 }
                 false
             }
 
+            acceptName.setOnClickListener {
+                if (btnBoolean==true) {
+                    it.hideKeyboard()
+                    textInfo.setText("${viewBinding.profileNameHeader.text}")
+                    btnBoolean = false
+                    viewModelProfile.setName("${viewBinding.profileNameHeader.text}", profileId.toString())
+                    acceptName.visibility = View.INVISIBLE
+                }
+            }
+            acceptAddress.setOnClickListener {
+                if (btnBoolean==true) {
+                    it.hideKeyboard()
+                    addressProfile.setText("${viewBinding.addressProfile.text}")
+                    btnBoolean = false
+                    viewModelProfile.setAddress(
+                        "${viewBinding.addressProfile.text}",
+                        profileId.toString()
+                    )
+                    acceptAddress.visibility = View.INVISIBLE
+                }
+            }
+
+            acceptDescription.setOnClickListener {
+                if (btnBoolean==true) {
+                    it.hideKeyboard()
+                    textInfo.setText("${viewBinding.textInfo.text}")
+                    btnBoolean = false
+                    viewModelProfile.setDescription(
+                        "${viewBinding.textInfo.text}",
+                        profileId.toString()
+                    )
+                    acceptDescription.visibility = View.INVISIBLE
+                }
+            }
 
             Glide.with(imageViewProfile.context)
                 .load(R.drawable.faceanime)

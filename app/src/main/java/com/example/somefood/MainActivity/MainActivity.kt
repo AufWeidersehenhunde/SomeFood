@@ -1,11 +1,8 @@
 package com.example.somefood.MainActivity
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PowerManager
-import android.os.PowerManager.WakeLock
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -20,6 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
     private val viewModelMain: MainActivityViewModel by viewModel()
     private val navigatorHolder by inject<NavigatorHolder>()
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme"
     private val navigator = object : AppNavigator(this, R.id.host_main) {
 
         override fun setupFragmentTransaction(

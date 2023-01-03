@@ -19,10 +19,11 @@ class ContainerViewModel(
     }
 
     fun goBack(uuid:String){
-        router.backTo(Screens.routeToListFragment(uuid))
+        //backTo is not working
+        router.newRootScreen(Screens.routeToListFragment(uuid))
     }
 
     fun routeToFavorite(uuid:String){
-        router.navigateTo(Screens.routeToFavoriteFragment(uuid))
+        router.newRootScreen(Screens.routeToFavoriteFragment(uuid))
     }
 }

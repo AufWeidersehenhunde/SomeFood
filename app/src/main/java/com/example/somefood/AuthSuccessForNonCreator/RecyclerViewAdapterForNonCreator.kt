@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.api.databinding.RecyclerViewItemBinding
+import com.example.somefood.DBandProvider.FavoriteFoods
 import com.example.somefood.DBandProvider.FoodDb
 
-class RecyclerViewAdapterForNonCreator (private var favorite: (FoodDb) -> Unit): RecyclerView.Adapter<RecyclerViewAdapterForNonCreator.MyViewHolder>() {
+class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit): RecyclerView.Adapter<RecyclerViewAdapterForNonCreator.MyViewHolder>() {
     var item: List<FoodDb> = listOf()
 
     fun set(items: List<FoodDb>) {
@@ -42,8 +43,7 @@ class RecyclerViewAdapterForNonCreator (private var favorite: (FoodDb) -> Unit):
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(item[position], favorite )
-
+        holder.bind(item[position], favorite)
     }
 
     override fun getItemCount(): Int {

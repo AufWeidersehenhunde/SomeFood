@@ -48,9 +48,9 @@ interface DaoUser {
     fun addFoodToFavorite(model:FavoriteFoods)
 
      @Query("SELECT* FROM favorites")
-     fun takeFavorite():Flow<FavoriteFoods>?
-
+     fun takeFavorite():Flow<List<FavoriteFoods>?>
+//in
      @Query("SELECT*FROM food WHERE uuid=:it")
-     suspend fun revertToFavorite(it:String): List<FoodDb?>
+      fun revertToFavorite(it:List<String>): Flow<List<FoodDb>?>
 
 }

@@ -26,6 +26,7 @@ class NonCreatorListViewModel(
     fun putFoodToFavorite(uuid:String, id:String){
         viewModelScope.launch(Dispatchers.IO) {
             repositorySQL.addFoodToFavorite(uuid, id)
+            println("$uuid and $id")
         }
     }
 

@@ -40,6 +40,6 @@ class RepositorySQL (
         val model = Orders(idFood = uuid, idUser = id, time = null)
     }
 
-    suspend fun takeFavorite(it:String) = User.revertToFavorite(it)
+    fun takeFavorite(it: List<String>) = User.revertToFavorite(it)
 
 }

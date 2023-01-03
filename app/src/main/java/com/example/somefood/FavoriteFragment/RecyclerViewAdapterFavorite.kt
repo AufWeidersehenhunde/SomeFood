@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.api.databinding.RecyclerViewItemFavoriteBinding
 import com.example.somefood.DBandProvider.FoodDb
 
-class RecyclerViewAdapterFavorite: RecyclerView.Adapter<RecyclerViewAdapterFavorite.MyViewHolder>() {
+class RecyclerViewAdapterFavorite(): RecyclerView.Adapter<RecyclerViewAdapterFavorite.MyViewHolder>() {
     var item: List<FoodDb> = listOf()
 
     fun set(items: List<FoodDb>) {

@@ -16,15 +16,38 @@ class FavoriteViewModel (
     private val _listFoods = MutableStateFlow<List<FoodDb>>(emptyList())
     val listFoods:MutableStateFlow<List<FoodDb>> = _listFoods
     val list = MutableStateFlow<List<FavoriteFoods>?>(null)
+    val list3 = MutableStateFlow<List<String>?>(null)
 
 
     private fun takeFavorite(){
         viewModelScope.launch {
-            repositorySQL.takeFavorite()?.collect{
-                list.value = listOf(it)
+            repositorySQL.takeFavorite().collect{
+                list.value = it
+                println("$it")
             }
             }
         }
+
+    private fun takeFavorite2(){
+        viewModelScope.launch {
+            list.value?.let {
+                list3.value = it.map { it.idFood }
+            }
+        }
+    }
+
+    private fun takeFavorite3(){
+        viewModelScope.launch{
+            list3.value?.let {
+                repositorySQL.takeFavorite(it).collect{
+                    if (it != null) {
+                        _listFoods.value = it
+                    }
+                    println("proverka$it")
+                }
+            }
+        }
+    }
 
 
 
@@ -32,6 +55,8 @@ class FavoriteViewModel (
 
 
     init {
+        takeFavorite3()
+        takeFavorite2()
         takeFavorite()
     }
 

@@ -1,15 +1,14 @@
-package com.example.somefood.FavoriteFragment
+package com.example.somefood.Orders
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.api.databinding.RecyclerViewItemBinding
 import com.example.api.databinding.RecyclerViewItemFavoriteBinding
 import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.FavoriteFragment.RecyclerViewAdapterFavorite
 
-class RecyclerViewAdapterFavorite(private val delFavorite: (FoodDb) -> Unit): RecyclerView.Adapter<RecyclerViewAdapterFavorite.MyViewHolder>() {
+class RecyclerViewAdapterOrders (): RecyclerView.Adapter<RecyclerViewAdapterOrders.MyViewHolder>() {
     var item: List<FoodDb> = listOf()
 
     fun set(items: List<FoodDb>) {
@@ -17,21 +16,18 @@ class RecyclerViewAdapterFavorite(private val delFavorite: (FoodDb) -> Unit): Re
         notifyDataSetChanged()
     }
 
-    class MyViewHolder(itemBinding: RecyclerViewItemBinding) :
+    class MyViewHolder(itemBinding: RecyclerViewItemFavoriteBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         private val binding = itemBinding
-        fun bind(food: FoodDb,
-        delFavorite:(FoodDb) -> Unit){
+        fun bind(food: FoodDb){
             binding.apply {
-                viewBtnAddToFavourite.setColorFilter(Color.RED)
-                name.text = food.name
-                Glide.with(imageView.context)
+                nameFood.text = food.name
+                Glide.with(imageViewFavorite.context)
                     .load(food.image)
-                    .into(imageView)
+                    .into(imageViewFavorite)
                 btnAddToFavourite.setOnClickListener {
-                    delFavorite(food)
-                }
 
+                }
             }
 
         }
@@ -40,12 +36,12 @@ class RecyclerViewAdapterFavorite(private val delFavorite: (FoodDb) -> Unit): Re
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemBinding =
-            RecyclerViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RecyclerViewItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(item[position], delFavorite)
+        holder.bind(item[position])
 
     }
 

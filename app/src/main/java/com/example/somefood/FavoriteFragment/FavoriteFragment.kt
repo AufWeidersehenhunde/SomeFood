@@ -12,6 +12,7 @@ import by.kirich1409.viewbindingdelegate.internal.findRootView
 import com.example.api.R
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.api.databinding.FragmentFavoriteBinding
+import com.example.somefood.AuthSuccessForNonCreator.NonCreatorListFragment
 import com.example.somefood.AuthSuccessForNonCreator.RecyclerViewAdapterForNonCreator
 import com.example.somefood.profileFragment.ProfileFragment
 import kotlinx.coroutines.flow.launchIn
@@ -36,8 +37,13 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val profileId = arguments?.getString(DATA)
         this.adapterFavorite =
-            RecyclerViewAdapterFavorite()
+            RecyclerViewAdapterFavorite({
+                if (profileId != null) {
+                    viewModelFavorite.delFoodInFavorite(it.uuid, profileId)
+                }
+            })
         observeElement()
         with(viewBinding.recyclerViewFavorite) {
             layoutManager = GridLayoutManager(

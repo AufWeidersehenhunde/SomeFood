@@ -29,7 +29,7 @@ class RepositorySQL (
     suspend fun insertAddress(address:String, uuid: String) = User.insertAddress(address, uuid)
 
     //favorite
-    fun takeFavorite() = User.takeFavorite()
+    fun takeAllFavorite() = User.takeAllFavorite()
 
     fun addFoodToFavorite(uuid:String, id:String) {
         val model = FavoriteFoods(idFood = uuid, idUser = id)
@@ -40,6 +40,10 @@ class RepositorySQL (
         val model = Orders(idFood = uuid, idUser = id, time = null)
     }
 
-    fun takeFavorite(it: List<String>) = User.revertToFavorite(it)
+    suspend fun checkFavoriteFood(uuid: String, id:String) = User.checkFavoriteFood(uuid, id)
+
+    fun takeFavorite(it: List<String>) = User.takeFavorite(it)
+
+    suspend fun deleteFavoriteFood(model:FavoriteFoods) = User.deleteFavoriteFood(model)
 
 }

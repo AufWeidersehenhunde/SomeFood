@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.api.R
 import com.example.api.databinding.FragmentListBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -49,6 +51,34 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                     2
                 )
                 adapter = adapterHome
+            }
+            with(viewBinding){
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewListViewModel.number.filterNotNull().collect {
+                        viewBinding.volume.text = it.toString()
+                    }
+                }
+
+                volumeMinus.setOnClickListener {
+                    viewListViewModel.minusSome(viewBinding.volume.text.toString())
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewListViewModel.number.filterNotNull().collect {
+                            viewBinding.volume.text = it.toString()
+                        }
+                    }
+                }
+
+
+                volumePlus.setOnClickListener {
+                    viewListViewModel.plusSome(viewBinding.volume.text.toString())
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewListViewModel.number.filterNotNull().collect {
+                            viewBinding.volume.text = it.toString()
+                        }
+                    }
+                }
+
+
 
             }
         }

@@ -17,10 +17,27 @@ class NonCreatorListViewModel(
 ) : ViewModel() {
     val listFoods = MutableStateFlow<List<FoodDb>>(emptyList())
     private val _user = MutableStateFlow<UsersDb?>(null)
+    val number = MutableStateFlow<Int?>(1)
+
 
     init {
         observe()
     }
+
+
+    fun minusSome(it:String){
+        if (number.value != 0 ) {
+            number.value = it.toInt() - 1
+        }
+        else{
+            number.value = 0
+        }
+    }
+
+    fun plusSome(it:String) {
+        number.value = it.toInt()+1
+    }
+
 
 
     fun putFoodToFavorite(uuid:String, id:String){

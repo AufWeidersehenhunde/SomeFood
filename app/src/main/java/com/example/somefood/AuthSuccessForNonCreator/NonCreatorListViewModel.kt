@@ -1,7 +1,10 @@
 package com.example.somefood.AuthSuccessForNonCreator
 
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.somefood.BottomSheetFragment
 import com.example.somefood.DBandProvider.FoodDb
 import com.example.somefood.DBandProvider.UsersDb
 import com.example.somefood.Screens
@@ -49,6 +52,7 @@ class NonCreatorListViewModel(
             }
         }
     }
+
 
     fun checkStatus(uuid: String) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -3,13 +3,16 @@ package com.example.somefood.AuthSuccessForNonCreator
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.api.databinding.RecyclerViewItemBinding
+import com.example.somefood.BottomSheetFragment
 import com.example.somefood.DBandProvider.FavoriteFoods
 import com.example.somefood.DBandProvider.FoodDb
 
-class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit): RecyclerView.Adapter<RecyclerViewAdapterForNonCreator.MyViewHolder>() {
+    class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit, private val bottomSheet:(FoodDb) -> Unit): RecyclerView.Adapter<RecyclerViewAdapterForNonCreator.MyViewHolder>() {
     var item: List<FoodDb> = listOf()
 
     fun set(items: List<FoodDb>) {
@@ -21,7 +24,8 @@ class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit):
         RecyclerView.ViewHolder(itemBinding.root) {
         private val binding = itemBinding
         fun bind(food:FoodDb,
-        favorite:(FoodDb) -> Unit){
+        favorite:(FoodDb) -> Unit,
+        bottomSheet:(FoodDb) -> Unit){
             binding.apply {
                 name.text = food.name
                 Glide.with(imageView.context)
@@ -29,6 +33,9 @@ class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit):
                     .into(imageView)
                 btnAddToFavourite.setOnClickListener {
                     favorite(food)
+                }
+                btnAdd.setOnClickListener {
+                    bottomSheet(food)
                 }
             }
 
@@ -43,7 +50,7 @@ class RecyclerViewAdapterForNonCreator (private val favorite: (FoodDb) -> Unit):
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(item[position], favorite)
+        holder.bind(item[position], favorite, bottomSheet)
     }
 
     override fun getItemCount(): Int {

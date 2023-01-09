@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.api.R
 import com.example.api.databinding.FragmentListBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.somefood.BottomSheetFragment
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
@@ -43,7 +45,9 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                     if (profileId != null) {
                         viewListViewModel.putFoodToFavorite(it.uuid, profileId)
                     }
-                })
+                }, {if (profileId != null) {
+                    BottomSheetFragment().show(requireActivity().supportFragmentManager, "tag")
+                }})
 
             with(viewBinding.recyclerView) {
                 layoutManager = GridLayoutManager(
@@ -52,31 +56,33 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                 )
                 adapter = adapterHome
             }
+
+
             with(viewBinding){
-                viewLifecycleOwner.lifecycleScope.launch {
-                    viewListViewModel.number.filterNotNull().collect {
-                        viewBinding.volume.text = it.toString()
-                    }
-                }
+//                viewLifecycleOwner.lifecycleScope.launch {
+//                    viewListViewModel.number.filterNotNull().collect {
+//                        viewBinding.volume.text = it.toString()
+//                    }
+//                }
+//
+//                volumeMinus.setOnClickListener {
+//                    viewListViewModel.minusSome(viewBinding.volume.text.toString())
+//                    viewLifecycleOwner.lifecycleScope.launch {
+//                        viewListViewModel.number.filterNotNull().collect {
+//                            viewBinding.volume.text = it.toString()
+//                        }
+//                    }
+//                }
 
-                volumeMinus.setOnClickListener {
-                    viewListViewModel.minusSome(viewBinding.volume.text.toString())
-                    viewLifecycleOwner.lifecycleScope.launch {
-                        viewListViewModel.number.filterNotNull().collect {
-                            viewBinding.volume.text = it.toString()
-                        }
-                    }
-                }
 
-
-                volumePlus.setOnClickListener {
-                    viewListViewModel.plusSome(viewBinding.volume.text.toString())
-                    viewLifecycleOwner.lifecycleScope.launch {
-                        viewListViewModel.number.filterNotNull().collect {
-                            viewBinding.volume.text = it.toString()
-                        }
-                    }
-                }
+//                volumePlus.setOnClickListener {
+//                    viewListViewModel.plusSome(viewBinding.volume.text.toString())
+//                    viewLifecycleOwner.lifecycleScope.launch {
+//                        viewListViewModel.number.filterNotNull().collect {
+//                            viewBinding.volume.text = it.toString()
+//                        }
+//                    }
+//                }
 
 
 

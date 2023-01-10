@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="2dp"
+    android:layout_margin="5dp"
     android:background="@drawable/for_back_white"
     android:clipToPadding="false">
 
@@ -23,6 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
             android:layout_width="130dp"

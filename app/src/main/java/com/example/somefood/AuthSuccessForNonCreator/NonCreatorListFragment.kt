@@ -46,7 +46,7 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
                         viewListViewModel.putFoodToFavorite(it.uuid, profileId)
                     }
                 }, {if (profileId != null) {
-                    BottomSheetFragment().show(requireActivity().supportFragmentManager, "tag")
+                    BottomSheetFragment.getInstance(it.uuid, profileId).show(requireActivity().supportFragmentManager, "tag")
                 }})
 
             with(viewBinding.recyclerView) {
@@ -58,37 +58,11 @@ class NonCreatorListFragment : Fragment(R.layout.fragment_list) {
             }
 
 
-            with(viewBinding){
-//                viewLifecycleOwner.lifecycleScope.launch {
-//                    viewListViewModel.number.filterNotNull().collect {
-//                        viewBinding.volume.text = it.toString()
-//                    }
-//                }
-//
-//                volumeMinus.setOnClickListener {
-//                    viewListViewModel.minusSome(viewBinding.volume.text.toString())
-//                    viewLifecycleOwner.lifecycleScope.launch {
-//                        viewListViewModel.number.filterNotNull().collect {
-//                            viewBinding.volume.text = it.toString()
-//                        }
-//                    }
-//                }
-
-
-//                volumePlus.setOnClickListener {
-//                    viewListViewModel.plusSome(viewBinding.volume.text.toString())
-//                    viewLifecycleOwner.lifecycleScope.launch {
-//                        viewListViewModel.number.filterNotNull().collect {
-//                            viewBinding.volume.text = it.toString()
-//                        }
-//                    }
-//                }
-
 
 
             }
         }
-    }
+
 
 
     private fun observeElement() {

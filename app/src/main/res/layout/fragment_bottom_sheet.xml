@@ -23,15 +23,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/nameSheetFood"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/imageForOrderBottomSheet"/>
+
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageForOrderBottomSheet"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@drawable/foodback"
                 android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameSheetFood"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
@@ -141,6 +155,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ii1">
 
                 <ImageView
+                    android:id="@+id/acceptOrder"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="15dp"
@@ -149,6 +164,7 @@
                     android:src="@drawable/prozrachnii_krug" />
 
                 <ImageView
+                    android:id="@+id/hideSheet"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="15dp"

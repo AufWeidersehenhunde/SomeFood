@@ -37,7 +37,8 @@ class RepositorySQL (
     }
 
     fun addFoodToOrder(uuid:String, id:String) {
-        val model = Orders(idFood = uuid, idUser = id, time = null)
+        val model = Orders(idFood = uuid, idUser = id, time = null, volume = null)
+        User.addFoodToOrder(model)
     }
 
     suspend fun checkFavoriteFood(uuid: String, id:String) = User.checkFavoriteFood(uuid, id)
@@ -45,5 +46,7 @@ class RepositorySQL (
     fun takeFavorite(it: List<String>) = User.takeFavorite(it)
 
     suspend fun deleteFavoriteFood(model:FavoriteFoods) = User.deleteFavoriteFood(model)
+
+    fun takeFoodForSheet(it:String) = User.takeFoodForSheet(it)
 
 }

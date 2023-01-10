@@ -21,6 +21,5 @@ object Screens {
     fun routeToProfileFragment(uuid: String) = FragmentScreen { ProfileFragment.getInstance(uuid) }
     fun routeToFavoriteFragment(uuid: String) =
         FragmentScreen { FavoriteFragment.getInstance(uuid) }
-    fun routeToBottomSheet(uuid: String) = FragmentScreen{BottomSheetFragment.getInstance(uuid)}
     fun routeToFragmentContainer(uuid: String) = FragmentScreen { ContainerFragment.getInstance(uuid) }
 }

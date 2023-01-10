@@ -34,7 +34,7 @@ val appModule = module {
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { FavoriteViewModel(get(), get())}
     viewModel { ContainerViewModel(get(),get()) }
-    viewModel{BottomSheetViewModel()}
+    viewModel{BottomSheetViewModel(get(), get())}
     single {
         Room.databaseBuilder(
             androidApplication().applicationContext,

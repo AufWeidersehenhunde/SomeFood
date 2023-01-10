@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.somefood.DBandProvider.FavoriteFoods
 import com.example.somefood.DBandProvider.FoodDb
+import com.example.somefood.DBandProvider.Orders
 import com.example.somefood.DBandProvider.UsersDb
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.DELETE
@@ -59,6 +60,14 @@ interface DaoUser {
     suspend fun checkFavoriteFood(uuid: String, id: String): FavoriteFoods?
 
     @Delete
-    suspend fun deleteFavoriteFood(model:FavoriteFoods)
+    suspend fun deleteFavoriteFood(model: FavoriteFoods)
+
+    //sheet
+
+    @Query("SELECT*FROM food WHERE uuid=:it")
+    fun takeFoodForSheet(it: String): Flow<FoodDb>
+
+    @Insert
+    fun addFoodToOrder(model:Orders)
 
 }

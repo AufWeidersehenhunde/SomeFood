@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:windowBackground">@drawable/aheg</item>
+        <item name="android:windowBackground">@drawable/back_ligth_green</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>
